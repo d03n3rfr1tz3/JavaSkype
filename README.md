@@ -104,7 +104,7 @@ Note that this API doesn't support multithreaded calls: if you want to go for so
 
 ## Building
 
-Simply run ```maven package```.
+Simply run ```mvn install```.
 
 ## Misceallenous
 
