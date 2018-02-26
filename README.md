@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/d03n3rfr1tz3/JavaSkype.svg?branch=master)](https://travis-ci.org/d03n3rfr1tz3/JavaSkype)
+
 # JavaSkype
 
 ## Recent changes
