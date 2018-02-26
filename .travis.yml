@@ -1,7 +1,18 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 notifications:
   email: false
-script: mvn test
+script: mvn clean package
 install: true
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Vc+7LSAG3fOCZpXo/VxyWymkFSxaE5ZwuDUmPGi3KsSCWsTnwf8QZdhrFYF0s3Cb2Nqf5s8+5HqQS7acyowPycdM25rihIUQ24UAUPOAKvryA94pvZMk76GOrcgVVjF51E5B5e0aAOvdiTuSqzvD6VjnCddWaa7hC7p8yqEEMaGAnBO8LTD7B5tzEi3HHPb3u2tr/OvxzXjWFXAxHtpGec2aYrWrN8JcoZaYTYQR8i/N6AdCXLJWB5wmxUZ6axW1Ppn8bsvWr/971O9ZGIs9rYj3cl+aXz+OCEJ3xhn9OMl0CK4ZJ2HE/gpEM7uoiUvY/DbxH/7Fahe+Ir+jv6HhKIGwE0p9e0RY78PKMPIMEkNDHpccUea5cEv79I7UlOdqkwCo/FUxPVHsqMaTblggoO1m0hmrfBvowiiVVjVs0ekz2gcmWgzDTdBsO5G1hjjMc/zLjqF/LIlpM8BLEAD/lAajxPJk2UBnp8g3COG+ol/8+GGg05IejPVWiynJyQ/Oq+gfKw+ZGP/qKnU+Sh6NPf4OVYUytIDRLI+IUAgySw4gOsm5/leV5Y8Bq2KX8kBxx7TdVz1ndCJ8jD36zDjXY4M57X13riPm/9hh5hH5xtarT1CFyjT8DRfWknxC1SmGK+srN6vZzI7k2qNPuRg4KsO9gdIxhgHksA5c9ar34Iw=
+  file_glob: true
+  file: "${TRAVIS_BUILD_DIR}/target/javaskype-*.jar"
+  skip_cleanup: true
+  overwrite: true
+  on:
+    repo: d03n3rfr1tz3/JavaSkype
