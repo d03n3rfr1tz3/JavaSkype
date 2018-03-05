@@ -357,7 +357,7 @@ class NotifConnector {
 			if (presenceString == null) {
               // happens when a user switches from offline to "hidden"
 			  presenceString = Presence.OFFLINE.getPresenceString();
-			  logger.fine('TEMP: User presence changed to Offline with empty Status. New Mood is: "' + (moodString == null ? '' : getPlaintext(moodString)) + '". Old Mood is: "' + user.getMood() + '"');
+			  logger.fine('TEMP: User presence changed to Offline with empty Status. New Mood is: ' + (moodString == null ? '' : getPlaintext(moodString)) + '. Old Mood is: ' + user.getMood());
             }
 			
 			if (presenceString == Presence.OFFLINE.getPresenceString() &&
