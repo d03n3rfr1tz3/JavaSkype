@@ -353,15 +353,18 @@ class NotifConnector {
             User user = (User) parseUser;
             String presenceString = getXMLField(formatted.body, "Status");
             String moodString = getXMLField(formatted.body, "Mood");
-            
+			String oldMood = user.getMood();
+			
 			if (presenceString == null) {
               // happens when a user switches from offline to "hidden"
 			  presenceString = Presence.OFFLINE.getPresenceString();
-			  logger.fine('TEMP: User presence changed to Offline with empty Status. New Mood is: ' + (moodString == null ? '' : getPlaintext(moodString)) + '. Old Mood is: ' + user.getMood());
+			  
+			  String newMood = "";
+			  if (moodString != null) newMood = getPlaintext(moodString);
+			  logger.fine("TEMP: User presence changed to Offline with empty Status. New Mood is: " + newMood + ". Old Mood is: " + oldMood);
             }
 			
-			if (presenceString == Presence.OFFLINE.getPresenceString() &&
-				moodString != null && user.getMood() != null && user.isEmpty() == false) {
+			if (presenceString == Presence.OFFLINE.getPresenceString() && moodString != null && oldMood != null && oldMood.isEmpty() == false) {
 				// got mood-updates(?) without changed presence and not hidden
 				presenceString = null;
 				logger.fine("Possible false-hidden presence change detected. Ignoring presence change.");
